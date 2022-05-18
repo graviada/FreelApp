@@ -1,0 +1,35 @@
+{% extends 'layout.html' %}
+
+{% block title %}Документы{% endblock %}
+
+{% block content %}
+<div class="card card-body">
+        <form action="/documents/create" method="POST">
+          <div class="form-group">
+            <label>Номер задания</label>
+            <input type="text" name="task_id" value="{{task_id}}" class="form-control">
+          </div>
+          <div class="form-group">
+            <label>Название документа</label>
+            <input type="text" name="doc_name" value="{{doc_name}}" class="form-control">
+          </div>
+          <div class="form-group">
+            <label>Расширение</label>
+            <input type="text" name="doc_extension" value="{{doc_extension}}" class="form-control">
+          </div>
+          <div class="form-group">
+            <label>Ссылка на диск</label>
+            <input type="text" name="active_link" value="{{active_link}}" class="form-control">
+          </div>
+          <div class="form-group">
+            <label>Дата загрузки</label>
+            <input type="date" name="download_date" value="{{download_date}}" class="form-control">
+          </div>
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-block">
+              Добавить документ
+            </button>
+          </div>
+        </form>
+</div>
+{% endblock %}

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang='ru'>
+<head>
+    <meta charset="utf-8">
+    <title>{% block title %}{% endblock %}</title>
+
+    <link rel="shortcut icon" type="image/x-icon" href="{{url_for('static', filename='favicon.png')}}">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
+
+    <script type="text/javascript" src="https://unpkg.com/popper.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/tooltip.js"></script>
+
+ </head>
+
+ <body class="loggedin">
+    <nav class="site-header sticky-top py-1">
+      <div class="container d-flex flex-column flex-md-row justify-content-between">
+          <a class="py-2 d-none d-md-inline-block" href="{{ url_for('home') }}">
+              <i class="fas fa-home"></i>
+              FreelApp
+          </a>
+          <a class="py-2 d-none d-md-inline-block" href="{{ url_for('logout') }}">
+              <i class="fas fa-sign-out-alt"></i>
+              Выход
+          </a>
+      </div>
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row">
+          <nav id="navig" class="col-md-2 d-none d-md-block sidebar">
+              <div class="sidebar-sticky">
+                  <font face="Trebuchet MS">
+                  <ul class="nav flex-column">
+                      <li class="nav-item">
+                          <a class="py-2 d-none d-md-inline-block" href="{{ url_for('profile') }}">
+                              <i class="fas fa-user-circle"></i>
+                              Профиль
+                          </a>
+                      </li>
+                      <div class="dropdown-divider"></div>
+                      <li class="nav-item">
+                          <a class="py-2 d-none d-md-inline-block" href="{{ url_for('doc_Read') }}">
+                              <i class="fa fa-file" aria-hidden="true"></i>
+                              Документы
+                          </a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="py-2 d-none d-md-inline-block" href="{{ url_for('task_Read') }}">
+                              <i class="fa fa-list" aria-hidden="true"></i>
+                              Задания
+                          </a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="py-2 d-none d-md-inline-block" href="#">
+                            <i class="fa fa-calendar"></i>
+                            Календарь
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="py-2 d-none d-md-inline-block" href="#">
+                            <i class="fa fa-comments" aria-hidden="true"></i>
+                            Чат
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="py-2 d-none d-md-inline-block" href="#">
+                            <i class="fa fa-print" aria-hidden="true"></i>
+                            Печать
+                        </a>
+                      </li>
+                      </li>
+                      <li class="nav-item">
+                          <a class="py-2 d-none d-md-inline-block" href="{{ url_for('search') }}">
+                              <i class="fa fa-search" aria-hidden="true"></i>
+                              Поисковик
+                          </a>
+                      </li>
+                      <div class="dropdown-divider"></div>
+                      <li class="nav-item">
+                        <a class="py-2 d-none d-md-inline-block" href="#">
+                            <i class="fa fa-question-circle" aria-hidden="true"></i>
+                            Служба поддержки
+                        </a>
+                      </li>
+                      <li class="nav-item"><a class="py-2 d-none d-md-inline-block"><p></p></a></li>
+                      <li class="nav-item"><a class="py-2 d-none d-md-inline-block"><p></p></a></li>
+                      <li class="nav-item"><a class="py-2 d-none d-md-inline-block"><p></p></a></li>
+                      <li class="nav-item"><a class="py-2 d-none d-md-inline-block"><p></p></a></li>
+                      <li class="nav-item"><a class="py-2 d-none d-md-inline-block"><p></p></a></li>
+                  </ul>
+                  </font>
+              </div>
+          </nav>
+
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+          <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+            <div class="col-12">
+            {% block content %}{% endblock %}
+            </div>
+          </div>
+        </main>
+
+      </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='jquery.js') }}"></script>
+ </body>
+</html>

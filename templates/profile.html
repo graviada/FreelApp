@@ -1,0 +1,71 @@
+{% extends 'layout.html' %}
+  
+{% block title %}Профиль{% endblock %}
+  
+{% block content %}
+<font face="Trebuchet MS">
+    <h1 class="h3">Профиль</h1>
+    <div>
+        <p>Информация об аккаунте:</p>
+        <table id="acc">
+            <tr>
+                <td><b>Логин:</b></td>
+                <td style="padding: 5px;">{{ account['user_login'] }}</td>
+            </tr>
+            <tr>
+                <td><b>Специальный доступ:</b></td>
+                {% block access %}
+                    {% if account['special_access'] == True %}
+                        <td style="padding: 5px;">Есть</td>
+                    {% else %}
+                        <td style="padding: 5px;">Отсутствует</td>
+                    {% endif %}
+                {% endblock access %}
+            </tr>
+        </table>
+        <div>
+            {% block private_info %}
+                {% if account['special_access'] == True %}
+                    <p></p>
+                    <h1 class="h3">Информация о ключах доступа</h1>
+                    <p>Таблица ключей специального доступа:</p>
+
+                    <div class="keys-table">
+                        <table border="1" cellspacing="80" cellpadding="10" data-search="true" data-striped="true">
+                            <thead>
+                            <tr style="background:#9ab973;">
+                                <th data-field="access_key">Ключ доступа</th>
+                                <th data-field="user_product">Название продукта</th>
+                                {% block admin_move_1 %}
+                                    {% if account['user_login'] == 'admin' %}
+                                        <th data-field="crud">Действие</th>
+                                    {% endif %}
+                                {% endblock admin_move_1 %}
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for acc in access %}
+                            <tr>
+                                <td class="lalign">{{acc[0]}}
+                                </td>
+                                <td>{{acc[4]}}
+                                </td>
+                                {% block admin_move_2 %}
+                                    {% if account['user_login'] == 'admin' %}
+                                        <td>
+                                            <b><a href="#" class="btn btn-secondary btn-sm">Изменить</a></b>
+                                            <b><a href="#" class="btn btn-danger btn-delete btn-sm">Удалить</a></b>
+                                        </td>
+                                    {% endif %}
+                                {% endblock admin_move_2 %}
+                            </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                {% endif %}
+            {% endblock private_info %}
+        </div>
+    </div>
+</font>
+{% endblock %}

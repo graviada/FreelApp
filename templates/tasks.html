@@ -1,0 +1,58 @@
+{% extends 'layout.html' %}
+
+{% block title %}Задания{% endblock %}
+
+{% block content %}
+<font face="Trebuchet MS">
+<h1 class="h3">Задания</h1>
+    <p>Здесь отображаются Ваши активные задания.</p>
+</font>
+
+<div class="task-table">
+    <table id="documents" border="1" cellspacing="0" cellpadding="0" data-search="true" data-striped="true">
+        <thead>
+        <tr>
+            <th data-field="task_id">Номер задания</th>
+            <th data-field="category_id">Категория задания</th>
+            <th data-field="executor_id">Исполнитель</th>
+            <th data-field="curator_id">Куратор</th>
+            <th data-field="task_description">Описание задания</th>
+            <th data-field="term_of_execution">Дедлайн</th>
+            <th data-field="task_status">Статус задания</th>
+            <th data-field="crud">Действие</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for task in tasks %}
+        <tr>
+            <td class="lalign">{{task[0]}}
+            </td>
+            <td>{{task[1]}}
+            </td>
+            <td>{{task[2]}}
+            </td>
+            <td>{{task[3]}}
+            </td>
+            <td>{{task[4]}}
+            </td>
+            <td>{{task[5]}}
+            </td>
+            </td>
+            <td>{{task[6]}}
+            </td>
+            <td><b><a href="#" class="btn btn-secondary btn-sm">Изменить</a></b>
+	        <b><a href="#" class="btn btn-danger btn-delete btn-sm">Удалить</a></b>
+	        </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<div class="create_form">
+    <p></p>
+    <form class="form-group" action="#" method="post">
+        <input type="submit" value="Добавить запись" class="btn btn-primary btn-block" name="">
+    </form>
+</div>
+{% endblock %}

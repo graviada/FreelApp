@@ -1,0 +1,29 @@
+{% extends 'layout.html' %}
+
+{% block title %}Поисковик{% endblock %}
+
+{% block content %}
+<font face="Trebuchet MS">
+<h1 class="h3">Поисковик</h1>
+    <div class="dropdown">
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+        Выберите таблицу
+      </button>
+      <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
+        <li><a class="dropdown-item" href="{{ url_for('doc_Read') }}">Документы</a></li>
+        <li><a class="dropdown-item" href="{{ url_for('task_Read') }}">Задания</a></li>
+        <li><a class="dropdown-item" href="{{ url_for('profile') }}">Ключи доступа</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item" href="#">Категории</a></li>
+        <li><a class="dropdown-item" href="#">Оплата</a></li>
+        <li><a class="dropdown-item" href="#">Пользователи</a></li>
+        <li><a class="dropdown-item" href="#">Работники</a></li>
+        <li><a class="dropdown-item" href="#">Чат</a></li>
+      </ul>
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+        <i class="bi bi-sort-up"></i>
+        Сортировка
+      </button>
+</div>
+</font>
+{% endblock %}

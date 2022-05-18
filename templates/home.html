@@ -1,0 +1,26 @@
+{% extends 'layout.html' %}
+  
+{% block title %}Домашняя страница{% endblock %}
+  
+{% block content %}
+<font face="Trebuchet MS">
+    <h1 class="h3">Старт</h1>
+    <p>С возвращением, {{ username }}!</p>
+    <h1 class="h3">Навигация</h1>
+    <p>Список доступных таблиц:</p>
+    <ol class="square">
+      <li>Документы</li>
+      <li>Задания</li>
+        {% block all_tables %}
+            {% if username == 'admin' %}
+                <li>Категории</li>
+                <li>Ключи доступа</li>
+                <li>Оплата</li>
+                <li>Пользователи</li>
+                <li>Работники</li>
+                <li>Чат</li>
+            {% endif %}
+        {% endblock all_tables %}
+    </ol>
+</font>
+{% endblock %}
